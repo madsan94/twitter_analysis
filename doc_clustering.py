@@ -11,13 +11,20 @@ print(X.shape)
 print(type(X))
 print(X[0])
 print(X[1])
+=======
+print(X[1],X[0])
 
 true_k = 2
 model = KMeans(n_clusters=true_k,init='k-means++',max_iter=100,n_init=1)
 model.fit(X)
+
 # order_centroids = model.cluster_centers_.argsort()[:, ::-1]
 # terms = vectorizer.get_feature_names()
 print(model.labels_[0:20])
+=======
+order_centroids = model.cluster_centers_.argsort()[:, ::-1]
+terms = vectorizer.get_feature_names()
+
 """
 for i in range(true_k):
     print("Cluster %d:" %i)
