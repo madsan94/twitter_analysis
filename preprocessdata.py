@@ -31,8 +31,8 @@ def remove_pattern(inp_txt,pattern):
     for i in r:
         inp_txt=re.sub(i,'',inp_txt)
     return(inp_txt)
-tweets['tidy_tweet']=np.vectorize(remove_pattern)(tweets['tweets'],"@[\w]*")
-tweets['tidy_tweet']=np.vectorize(remove_pattern)(tweets['tweets'],"#[\w]*")
+tweets['tidy_tweet']=np.vectorize(remove_pattern(tweets['tweets'],"@[\\w]*"))
+tweets['tidy_tweet']=np.vectorize(remove_pattern(tweets['tweets'],"#[\\w]*"))
 #Remove Punctuation and special characters
 tweets['tidy_tweet']=tweets['tidy_tweet'].str.replace("[^a-zA-Z#]"," ")
 #Remove short words
@@ -48,15 +48,15 @@ for i in range(len(tokenized_tweet)):
 
 tweets['tidy_tweet'] = tokenized_tweet
 #Plots
-all_words = ' '.join([text for text in tweets['tidy_tweet']])
-from wordcloud import WordCloud
-wordcloud = WordCloud(width=800, height=500, random_state=21, max_font_size=110).generate(all_words)
+# all_words = ' '.join([text for text in tweets['tidy_tweet']])
+# from wordcloud import WordCloud
+# wordcloud = WordCloud(width=800, height=500, random_state=21, max_font_size=110).generate(all_words)
 
-plt.figure(figsize=(10, 7))
-plt.imshow(wordcloud, interpolation="bilinear")
-plt.axis('off')
-plt.show()
-print(all_words)
+# plt.figure(figsize=(10, 7))
+# plt.imshow(wordcloud, interpolation="bilinear")
+# plt.axis('off')
+# plt.show()
+# print(all_words)
 
 #Remove line breaks and tabs
 text.replace('\n','').replace('\r','')
